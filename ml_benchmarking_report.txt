@@ -1,0 +1,118 @@
+PPMI Machine Learning Benchmarking Report
+==================================================
+
+DATASET SUMMARY
+--------------------
+Total patients: 40
+Control patients: 20
+PD patients: 20
+Features used: ['L_Caudate_SBR', 'L_Putamen_SBR', 'L_Striatum_SBR', 'Overall_Striatum_SBR', 'R_Caudate_SBR', 'R_Putamen_SBR', 'R_Striatum_SBR']
+Training set size: 28
+Test set size: 12
+
+MODEL PERFORMANCE SUMMARY
+------------------------------
+1. Naive Bayes
+   Accuracy: 0.917
+   Precision: 0.857
+   Recall: 1.000
+   F1-Score: 0.923
+   CV Accuracy: 0.673 ± 0.185
+   ROC AUC: 0.917
+
+2. SVM (Linear)
+   Accuracy: 0.833
+   Precision: 0.750
+   Recall: 1.000
+   F1-Score: 0.857
+   CV Accuracy: 0.800 ± 0.194
+   ROC AUC: 1.000
+
+3. Linear Discriminant Analysis
+   Accuracy: 0.833
+   Precision: 0.750
+   Recall: 1.000
+   F1-Score: 0.857
+   CV Accuracy: 0.833 ± 0.149
+   ROC AUC: 1.000
+
+4. Logistic Regression
+   Accuracy: 0.750
+   Precision: 0.667
+   Recall: 1.000
+   F1-Score: 0.800
+   CV Accuracy: 0.760 ± 0.168
+   ROC AUC: 1.000
+
+5. SVM (RBF)
+   Accuracy: 0.750
+   Precision: 0.667
+   Recall: 1.000
+   F1-Score: 0.800
+   CV Accuracy: 0.793 ± 0.162
+   ROC AUC: 1.000
+
+6. Quadratic Discriminant Analysis
+   Accuracy: 0.750
+   Precision: 0.667
+   Recall: 1.000
+   F1-Score: 0.800
+   CV Accuracy: 0.793 ± 0.124
+   ROC AUC: 1.000
+
+7. K-Nearest Neighbors
+   Accuracy: 0.750
+   Precision: 0.714
+   Recall: 0.833
+   F1-Score: 0.769
+   CV Accuracy: 0.827 ± 0.106
+   ROC AUC: 0.819
+
+8. XGBoost
+   Accuracy: 0.667
+   Precision: 0.625
+   Recall: 0.833
+   F1-Score: 0.714
+   CV Accuracy: 0.607 ± 0.176
+   ROC AUC: 0.833
+
+9. Random Forest
+   Accuracy: 0.667
+   Precision: 0.667
+   Recall: 0.667
+   F1-Score: 0.667
+   CV Accuracy: 0.647 ± 0.144
+   ROC AUC: 0.833
+
+10. Gradient Boosting
+   Accuracy: 0.583
+   Precision: 0.571
+   Recall: 0.667
+   F1-Score: 0.615
+   CV Accuracy: 0.647 ± 0.144
+   ROC AUC: 0.750
+
+11. Decision Tree
+   Accuracy: 0.500
+   Precision: 0.500
+   Recall: 0.500
+   F1-Score: 0.500
+   CV Accuracy: 0.640 ± 0.168
+   ROC AUC: 0.500
+
+KEY FINDINGS
+---------------
+Best performing model: Naive Bayes
+Best F1-Score: 0.923
+Best Accuracy: 0.917
+
+FEATURE ANALYSIS
+------------------
+SBR features used for classification:
+  - L_Caudate_SBR
+  - L_Putamen_SBR
+  - L_Striatum_SBR
+  - Overall_Striatum_SBR
+  - R_Caudate_SBR
+  - R_Putamen_SBR
+  - R_Striatum_SBR
