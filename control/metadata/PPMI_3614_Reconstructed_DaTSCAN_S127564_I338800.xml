@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idaxs xmlns="http://ida.loni.usc.edu" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="/xsds/idaxs_2_0.xsd">
+<project xmlns="">
+ <projectIdentifier>PPMI</projectIdentifier>
+ <projectDescription>Parkinson&#039;s Progression Markers Initiative</projectDescription>
+ <siteKey>096</siteKey>
+ <subject>
+  <subjectIdentifier>3614</subjectIdentifier>
+  <researchGroup>Control</researchGroup>
+  <subjectSex>M</subjectSex>
+  <visit>
+   <visitIdentifier>Screening</visitIdentifier>
+  </visit>
+  <study>
+   <studyIdentifier>39172</studyIdentifier>
+   <subjectAge>62.64</subjectAge>
+   <ageQualifier>Y</ageQualifier>
+   <weightKg>73.9</weightKg>
+   <postMortem>F</postMortem>
+   <series>
+    <seriesIdentifier>127564</seriesIdentifier>
+    <modality>SPECT</modality>
+    <dateAcquired>2011-10-04</dateAcquired>
+    <seriesLevelMeta>
+     <derivedProduct>
+      <imageUID>338800</imageUID>
+      <processedDataLabel>Reconstructed DaTSCAN</processedDataLabel>
+      <imageType>image volume</imageType>
+      <tissue>All</tissue>
+      <hemisphere>Both</hemisphere>
+      <anatomicStructure>Brain</anatomicStructure>
+      <registration>native</registration>
+      <relatedImage>
+       <imageUID>264075</imageUID>
+       <relation>derived from</relation>
+      </relatedImage>
+      <provenanceDetail>
+       <step>1</step>
+       <process>Reconstruction</process>
+       <package>HERMES</package>
+       <program>HOSEM</program>
+       <programVersion>1</programVersion>
+       <timestamp>2000-01-01T00:00:00</timestamp>
+       <platform>SUN</platform>
+       <operatingSystem>Solaris</operatingSystem>
+      </provenanceDetail>
+      <provenanceDetail>
+       <step>2</step>
+       <process>Attenuation Correction</process>
+       <package>PMOD</package>
+       <timestamp>2000-01-01T00:00:00</timestamp>
+       <platform>Windows</platform>
+       <operatingSystem>Server 2008</operatingSystem>
+      </provenanceDetail>
+      <creationDate>2000-01-01</creationDate>
+      <processingInstitution>IND</processingInstitution>
+     </derivedProduct>
+     <relatedImageDetail>
+      <originalRelatedImage>
+       <imageUID>264075</imageUID>
+       <description>RAW 1</description>
+       <protocolTerm>
+        <protocol term="Manufacturer">PICKER</protocol>
+        <protocol term="Mgf Model">HERMES Workstation</protocol>
+        <protocol term="Rows">128.0</protocol>
+        <protocol term="Columns">128.0</protocol>
+        <protocol term="Pixel Spacing Row">3.13794</protocol>
+        <protocol term="Pixel Spacing Col">3.13794</protocol>
+        <protocol term="Rotations">1.0</protocol>
+        <protocol term="Scan Arc">360.0</protocol>
+        <protocol term="Angular Step">3.0</protocol>
+        <protocol term="Frame Duration">15000.0</protocol>
+        <protocol term="Radiopharmaceutical">DAT</protocol>
+        <protocol term="Radionuclide Dose">0.0</protocol>
+        <protocol term="Detector">STEP AND SHOOT</protocol>
+        <protocol term="Collimator Name"/>
+        <protocol term="Collimator Type">UNKN</protocol>
+       </protocolTerm>
+      </originalRelatedImage>
+     </relatedImageDetail>
+    </seriesLevelMeta>
+   </series>
+  </study>
+ </subject>
+</project>
+</idaxs>

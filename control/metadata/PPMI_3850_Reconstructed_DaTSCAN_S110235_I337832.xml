@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idaxs xmlns="http://ida.loni.usc.edu" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="/xsds/idaxs_2_0.xsd">
+<project xmlns="">
+ <projectIdentifier>PPMI</projectIdentifier>
+ <projectDescription>Parkinson&#039;s Progression Markers Initiative</projectDescription>
+ <siteKey>291</siteKey>
+ <subject>
+  <subjectIdentifier>3850</subjectIdentifier>
+  <researchGroup>Control</researchGroup>
+  <subjectSex>F</subjectSex>
+  <visit>
+   <visitIdentifier>Screening</visitIdentifier>
+  </visit>
+  <study>
+   <studyIdentifier>34249</studyIdentifier>
+   <subjectAge>50.21</subjectAge>
+   <ageQualifier>Y</ageQualifier>
+   <weightKg>48.0</weightKg>
+   <postMortem>F</postMortem>
+   <series>
+    <seriesIdentifier>110235</seriesIdentifier>
+    <modality>SPECT</modality>
+    <dateAcquired>2011-03-31</dateAcquired>
+    <seriesLevelMeta>
+     <derivedProduct>
+      <imageUID>337832</imageUID>
+      <processedDataLabel>Reconstructed DaTSCAN</processedDataLabel>
+      <imageType>image volume</imageType>
+      <tissue>All</tissue>
+      <hemisphere>Both</hemisphere>
+      <anatomicStructure>Brain</anatomicStructure>
+      <registration>native</registration>
+      <relatedImage>
+       <imageUID>238101</imageUID>
+       <relation>derived from</relation>
+      </relatedImage>
+      <provenanceDetail>
+       <step>1</step>
+       <process>Reconstruction</process>
+       <package>HERMES</package>
+       <program>HOSEM</program>
+       <programVersion>1</programVersion>
+       <timestamp>2000-01-01T00:00:00</timestamp>
+       <platform>SUN</platform>
+       <operatingSystem>Solaris</operatingSystem>
+      </provenanceDetail>
+      <provenanceDetail>
+       <step>2</step>
+       <process>Attenuation Correction</process>
+       <package>PMOD</package>
+       <timestamp>2000-01-01T00:00:00</timestamp>
+       <platform>Windows</platform>
+       <operatingSystem>Server 2008</operatingSystem>
+      </provenanceDetail>
+      <creationDate>2000-01-01</creationDate>
+      <processingInstitution>IND</processingInstitution>
+     </derivedProduct>
+     <relatedImageDetail>
+      <originalRelatedImage>
+       <imageUID>238101</imageUID>
+       <description>HIRN-PPMI</description>
+       <protocolTerm>
+        <protocol term="Manufacturer">SIEMENS NM</protocol>
+        <protocol term="Mgf Model">IP2</protocol>
+        <protocol term="Rows">128.0</protocol>
+        <protocol term="Columns">128.0</protocol>
+        <protocol term="Pixel Spacing Row">0.0</protocol>
+        <protocol term="Pixel Spacing Col">0.0</protocol>
+        <protocol term="Rotations">0.0</protocol>
+        <protocol term="Scan Arc">0.0</protocol>
+        <protocol term="Angular Step">0.0</protocol>
+        <protocol term="Frame Duration">0.0</protocol>
+        <protocol term="Radiopharmaceutical">DAT</protocol>
+        <protocol term="Radionuclide Dose">0.0</protocol>
+        <protocol term="Detector"/>
+        <protocol term="Collimator Name"/>
+        <protocol term="Collimator Type"/>
+       </protocolTerm>
+      </originalRelatedImage>
+     </relatedImageDetail>
+    </seriesLevelMeta>
+   </series>
+  </study>
+ </subject>
+</project>
+</idaxs>

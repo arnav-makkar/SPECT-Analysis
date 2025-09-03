@@ -1,6 +1,0 @@
-# Jupytext configuration file
-# This enables automatic syncing between .py and .ipynb files
-
-formats = "ipynb,py:percent"
-notebook_metadata_filter = "jupytext,-all"
-cell_metadata_filter = "jupytext,-all"
