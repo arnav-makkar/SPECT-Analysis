@@ -26,6 +26,17 @@ class PPMIDataLoader:
             root_path: Root directory containing PPMI_Data folders and CSV files
         """
         self.root_path = Path(root_path)
+        
+        # Try to find the data directories by looking in parent directories if needed
+        if not (self.root_path / "PPMI_Data 1").exists() and not (self.root_path / "PPMI_Data 2").exists():
+            # Look in parent directories
+            current = self.root_path
+            for _ in range(3):  # Look up to 3 levels up
+                if (current / "PPMI_Data 1").exists() or (current / "PPMI_Data 2").exists():
+                    self.root_path = current
+                    break
+                current = current.parent
+        
         self.ppmi_data_1 = self.root_path / "PPMI_Data 1"
         self.ppmi_data_2 = self.root_path / "PPMI_Data 2"
         self.metadata_folder = self.root_path / "metadata"
@@ -144,13 +155,22 @@ class PPMIDataLoader:
                 logger.warning(f"Failed to extract info from {dicom_file}: {e}")
                 
         # Create DataFrame
-        mapping_df = pd.DataFrame(mapping_data)
-        
-        # Clean up patient IDs
-        mapping_df['patient_id'] = mapping_df['patient_id'].astype(str)
+        if not mapping_data:
+            logger.warning("No DICOM files found! Creating empty DataFrame with expected columns")
+            mapping_df = pd.DataFrame(columns=[
+                'patient_id', 'file_path', 'filename', 'data_folder', 
+                'patient_id_from_filename', 'modality', 'acquisition_info'
+            ])
+        else:
+            mapping_df = pd.DataFrame(mapping_data)
+            # Clean up patient IDs
+            mapping_df['patient_id'] = mapping_df['patient_id'].astype(str)
         
         logger.info(f"Created mapping for {len(mapping_df)} images")
-        logger.info(f"Unique patients: {mapping_df['patient_id'].nunique()}")
+        if len(mapping_df) > 0:
+            logger.info(f"Unique patients: {mapping_df['patient_id'].nunique()}")
+        else:
+            logger.warning("No images found - dataset will be empty")
         
         return mapping_df
     
@@ -170,6 +190,11 @@ class PPMIDataLoader:
         
         # Start with image mapping
         merged_df = mapping_df.copy()
+        
+        # If mapping_df is empty, return early
+        if len(merged_df) == 0:
+            logger.warning("No images to merge with clinical data")
+            return merged_df
         
         # Merge with idaSearch data
         if 'ida_search' in clinical_data:
@@ -228,13 +253,13 @@ class PPMIDataLoader:
         """
         summary = {
             'total_images': len(merged_df),
-            'unique_patients': merged_df['patient_id'].nunique(),
-            'data_folders': merged_df['data_folder'].value_counts().to_dict(),
-            'modalities': merged_df['modality'].value_counts().to_dict()
+            'unique_patients': merged_df['patient_id'].nunique() if len(merged_df) > 0 else 0,
+            'data_folders': merged_df['data_folder'].value_counts().to_dict() if len(merged_df) > 0 else {},
+            'modalities': merged_df['modality'].value_counts().to_dict() if len(merged_df) > 0 else {}
         }
         
         # Add clinical data summary if available
-        if 'sex' in merged_df.columns:
+        if 'sex' in merged_df.columns and len(merged_df) > 0:
             summary['sex_distribution'] = merged_df['sex'].value_counts().to_dict()
             
         if 'age' in merged_df.columns:

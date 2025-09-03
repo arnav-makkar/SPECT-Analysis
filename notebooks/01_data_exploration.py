@@ -43,7 +43,23 @@ print("Libraries imported successfully!")
 
 # %%
 # Cell 2: Load PPMI Data
+import os
 from data.ppmi_custom_loader import load_ppmi_data
+
+# Change to the main project directory to find the data
+# Look for PPMI_Data folders in parent directories
+current_dir = Path.cwd()
+project_root = current_dir
+for _ in range(3):  # Look up to 3 levels up
+    if (current_dir / 'PPMI_Data 1').exists() or (current_dir / 'PPMI_Data 2').exists():
+        project_root = current_dir
+        break
+    current_dir = current_dir.parent
+
+os.chdir(project_root)
+print(f"Changed working directory to: {os.getcwd()}")
+print(f"PPMI_Data 1 exists: {(project_root / 'PPMI_Data 1').exists()}")
+print(f"PPMI_Data 2 exists: {(project_root / 'PPMI_Data 2').exists()}")
 
 # %%
 print("Loading PPMI data...")
@@ -139,12 +155,11 @@ except Exception as e:
 
 # %%
 # Cell 5: SBR Feature Calculation & Baseline
-from features.sbr_calculator import SBRCalculator
-from utils.config import get_config
+from features.simple_sbr_calculator import SimpleSBRCalculator
 
 # %%
-config = get_config()
-sbr_calculator = SBRCalculator(config)
+# Initialize simplified SBR calculator
+sbr_calculator = SimpleSBRCalculator()
 
 # %%
 # Calculate SBR features for a subset
@@ -156,7 +171,7 @@ print(f"Calculating SBR features for {sample_size} sample images...")
 sample_features = sbr_calculator.calculate_sbr_dataset(sample_mapping)
 
 # %%
-print(f"\nSBR features calculated: {len(sample_features.columns) - 3} features")
+print(f"\nSBR features calculated: {len(sample_features.columns) - 4} features")
 print(f"Feature columns: {list(sample_features.columns)}")
 
 # %%
@@ -173,11 +188,12 @@ from sklearn.preprocessing import StandardScaler
 # %%
 # Prepare features for baseline model
 feature_cols = [col for col in sample_features.columns 
-                if col not in ['series_path', 'patient_id', 'label']]
+                if col not in ['file_path', 'patient_id', 'sex', 'age']]
 
 # %%
 X = sample_features[feature_cols].fillna(0)
-y = sample_features['label']
+# For demonstration, create mock labels based on age (older = higher risk)
+y = (sample_features['age'] > 65).astype(int)
 
 # %%
 print(f"Features: {X.shape}")
